@@ -52,6 +52,7 @@ jobs:
             --standalone
             -f markdown+rebase_relative_paths+markdown_in_html_blocks
             --lua-filter source/utils/parse_html_tables.lua
+            --lua-filter source/utils/page_break.lua\
             -F pandoc-crossref
             --citeproc
             --csl resources/ieee-with-url.csl
