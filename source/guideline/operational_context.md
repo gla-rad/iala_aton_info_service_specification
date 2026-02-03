@@ -68,7 +68,7 @@ Since S-125 is intended for ECDIS, it is required that S-125 comply with require
 
 ## Functional and Non-functional Requirements {#sec:functional_non_functional_reqs}
 
-The table below defines the functional requirements, as there are defined in the IALA documentation for the IMO MS-2 Aids to Navigation Maritime Service [@cite:iala-ms2]. Please note that the feature identifiers referenced in [@tbl:ms2-non-functional-requirement], are also referring to service features identified in the IALA MS-2 specification document.
+The table below defines the functional requirements, as there are defined in the IALA documentation for the IMO MS-2 Aids to Navigation Maritime Service [@cite:iala-ms2]. Please note that the feature identifiers referenced in [@tbl:ms2-functional-requirements], are also referring to service features identified in the IALA MS-2 specification document.
 
 | Requirement Type | Requirement ID | Requirement Name | Requirement Text | Feature Identifier |
 | --- | --- | --- | --- | --- |
@@ -81,8 +81,6 @@ The table below defines the functional requirements, as there are defined in the
 | **Functional** | MS2-FR007 | Data Update Status | The service must be able to provide the users with the status of their respective subscriptions and whether the current dataset is the latest one, along with other relevant information. | F002, F006 |
 | **Functional** | MS2-FR008 | Cancellation of Subscription | The service provides a facility to cancel the subscription. | F004 |
 | **Functional** | MS2-FR009 | Data Validation Certificate | The service can provide on demand the security certificate that was used to secure the data transmission. | F006, F009 |
-| **Functional** | MS2-FR010 | Discrepancy Reporting | Provides a secure but open interface for reporting discrepancies. These reports should be authorized, and anonymous reporting should not be allowed. | F007, F016, F017 |
-| **Functional** | MS2-FR011 | Discrepancy Flagging | Multiple AtoN service discrepancies are flagged to system administrators as soon as they are reported, so that they can be actioned. | F007, F016, F017 |
 | **Functional** | MS2-FR012 | Information Filtering | The end users can filter the relevant AtoN information by name or based on a point, line, polygon geometry, or receive the complete service content.  | F008 |
 | **Functional** | MS2-FR013 | Delivery Acknowledgement Request | The service is able to request a data delivery acknowledgement for any end-user. The requested acknowledgement should support multiple levels (receiving, reading etc.) | F011 |
 | **Functional** | MS2-FR014 | Delivery Acknowledgement Confirmation | The service provides a common but secure facility for all end-users to acknowledge the successful updates of AtoN information if requested. | F011 |
@@ -94,7 +92,7 @@ The table below defines the functional requirements, as there are defined in the
 
 : Functional Requirements for the MS-2 – Aids to Navigation  Service. {#tbl:ms2-functional-requirements}
 
-The table below defines non-functional requirements for the S-125 service, as these are defined in the IALA documentation for the IMO MS-2 Aids to Navigation Maritime Service [@cite:iala-ms2]. Please note that the feature identifiers referenced in [@tbl:ms2-non-functional-requirement], are also referring to service features identified in the IALA MS-2 specification document.
+The table below defines non-functional requirements for the S-125 service, as these are defined in the IALA documentation for the IMO MS-2 Aids to Navigation Maritime Service [@cite:iala-ms2]. Please note that the feature identifiers referenced in [@tbl:ms2-non-functional-requirements], are also referring to service features identified in the IALA MS-2 specification document.
 
 | Requirement Type | Requirement ID | Requirement Name | Requirement Text | Feature Identifier |
 | --- | --- | --- | --- | --- |
@@ -211,6 +209,7 @@ The following tables describe the operational activities of the service.
 
 **Post-conditions**: The correct AtoN status information is displayed
 
+<del>
 #### Use-case #4
 
 **Name**: Retrieve information on the status of a single AtoN based on its MRN [@cite:iala-g1143] or location.
@@ -230,3 +229,4 @@ The following tables describe the operational activities of the service.
   3. The data is rendered and displayed to the user.
 
 **Post-conditions**: The correct AtoN status information is displayed.
+</del>

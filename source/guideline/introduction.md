@@ -1,7 +1,7 @@
 # Introduction {#sec:introduction}
  
 This document is a specification for the technical service of provision of Marine Aids to Navigation (AtoN) information, following the IALA guideline G1128 [@cite:iala-g1128].
-In the context of e-navigation there are a number of maritime services, and each of these make reference to a number of associated technical services. The technical services themselves are described on three levels;
+In the context of e-navigation there is a number of maritime services, and each of these make reference to a number of associated technical services. The technical services themselves are described on three levels;
 
 * Service specification (this document)
 

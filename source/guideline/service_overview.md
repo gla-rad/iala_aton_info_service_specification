@@ -114,7 +114,7 @@ This operation can be used for filtering and retrieving S-125 datasets from a se
 
 If multiple operation parameters are provided, only the results matching all requested filters are to be returned. If no operation parameters are provided, the response should include all datasets currently available in the service provider. A service provider may offer different encodings of AtoN information in accordance with the S-100 standard, which can be specified as an enumeration (XML/GML or binary). A service provider is required to offer at least one of the available encodings.
 
-All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition. The `<AreaName>` parameter however is intentionally left more abstract, so that a more generic server-side area naming convention can be utilised (e.g. nationally defined waterways). It is envisaged that area name identifiers based on the IHO S-130 data product could be used in the future.
+All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
 
 #### Operation Parameters {#sec:get_operation_parameters}
 
@@ -122,9 +122,8 @@ All instances of services providing AtoN information are required to support all
 | --- | --- | ---  | --- |
 | DatasetReference | See technical design | 0..1 | The dataset identifier of a specific S-125 dataset. A list of all supported references can be retrieved via Get Summary operation. If no references are provided, it's up to the service to decide what to return. |
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information S-125 datasets by a bounding box). |
-| AreaName | See technical design | 0..1 | Name or identifier of a pre-defined area or waterway (e.g. “German Bight”). |
+| unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | TimePeriod (Optional) | See technical design | 0..1 | An optional parameter denoting the time period (ValidFrom, ValidTo) in which a dataset is valid and becomes subject to changes. The service response is expected to encompass all modifications that occurred within the specified interval and should be provided in the form of complete datasets or delta files, adhering to the specifications outlined in the S-100 data model specification. |
-| AtoNIdentifier | MRN | 0..1 | An AtoN MRN can be provided to query information related to the geographical location of a specific AtoN. |
 
 : The Get Operation Parameters. {#tbl:get_operational_parameters}
 
@@ -140,7 +139,7 @@ The operation can be used for filtering and retrieving the summary information r
 
 If multiple operation parameters are provided, only the results that match all requested filters should be included. If no parameters are given, the return should include all available datasets.
 
-All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_summary_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the respective service technical design specification. In most cases the parameter description provides an adequate definition. The `<AreaName>` parameter however is again intentionally left more abstract, so that a more generic server-side area naming convention can be utilised (e.g. nationally defined waterways). It is envisaged that area name identifiers based on the IHO S-130 data product could be used in the future.
+All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_summary_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the respective service technical design specification. In most cases the parameter description provides an adequate definition.
 
 #### Operation Parameters {#sec:get_summary_operation_parameters}
 
@@ -148,9 +147,8 @@ All instances of services providing AtoN information are required to support all
 | --- | --- | ---  | --- |
 | DatasetReference | See technical design | 0..1 | The dataset identifier of a specific S-125 dataset. If no references are provided, it's up to the service to decide what to return. |
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information by a bounding box). |
-| AreaName | See technical design | 0..1 | Name or identifier of a pre-defined area or waterway (e.g. “German Bight”). |
+| unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | TimePeriod (Optional) | See technical design | 0..1 | An optional parameter denoting the time period (ValidFrom, ValidTo) in which a dataset is valid and becomes subject to changes. The service response should only include the S-125 datasets for which modifications occurred within the specified interval. |
-| AtoNIdentifier | MRN | 0..1 | An MRN can be provided to query information related to a specific AtoN. |
 
 : The Get Summary Operation Parameters. {#tbl:get_summary_operational_parameters}
 
@@ -182,7 +180,7 @@ This operation consumes the following consumer operations:
 
 The Upload consumer operation is utilised by the service provider to push the incurred S-125 dataset changes to the subscribed service consumer. The Subscription Notification operation on the other hand, is used to inform the consumer that on the status of the subscription, i.e. when it has been successfully activated or removed. More information on this operation can be found in the [@sec:dynamic_behaviour], describing the dynamic behaviour of the Subscription operation. Note that for each new subscription, a subscription identifier should be made available to the consumer.
 
-All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:subscription_operation_parameters], although the specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition. The `<AreaName>` parameter however is again intentionally left more abstract, so that a more generic server-side area naming convention can be utilised (e.g. nationally defined waterways). It is envisaged that area name identifiers based on the IHO S-130 data product could be used in the future.
+All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:subscription_operation_parameters], although the specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
 
 #### Operation Parameters {#sec:subscription_operation_parameters}
 
@@ -190,9 +188,8 @@ All instances of services providing AtoN information are required to support all
 | --- | --- | ---  | --- |
 | DatasetReference | See technical design | 0..1 | The dataset identifier of a specific S-125 dataset. A list of all supported references can be retrieved via Get Summary operation. If no references are provided, it's up to the service to decide what to return. |
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information by a bounding box). |
-| AreaName | See technical design | 0..1 | Name or identifier of a pre-defined area or waterway (e.g. “German Bight”). |
+| unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | SubscriptionPeriod | See technical design | 0..1 | The period for which the subscription is active (start and end date/time). |
-| AtoNIdentifier | MRN | 0..1 | An MRN can be provided to query information related to a specific AtoN. |
 
 : The Subscription Operation Parameters. {#tbl:subscription_operational_parameters}
 
