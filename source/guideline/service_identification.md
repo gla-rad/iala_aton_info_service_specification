@@ -7,7 +7,7 @@ The purpose of this chapter is to provide a unique identification of the service
 | Information Field | Information Value                                                         |
 | ---------------- | -------------------------------------------------------------------------- |
 | Name             | TBD                                                                        |
-| ID               | MRN assigned by IHO  (ex: urn:mrn:iho:technicalservice:specification:aton) |
+| ID               | MRN assigned by IALA (ex: urn:mrn:iala:techsvc:ss:arm:atoninfo:1.0)        |
 | Version          | 1.0                                                                        |
 | Description      |                                                                            | 
 | Keywords         | Marine Aids to Navigation, S-125                                           |
