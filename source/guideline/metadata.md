@@ -1,6 +1,6 @@
 ---
 # Document title and subtitle
-title: "Marine Aids to Navigation (AtoN): Service Specification"
+title: "Marine Aids to Navigation (AtoN) Service Specification"
 subtitle: "Service Specification for the Provision of AtoN information to End-Users"
 # Suppress figure caption titles as Word will add them automatically
 figureTemplate: "$$t$$"
