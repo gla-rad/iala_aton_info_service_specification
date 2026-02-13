@@ -16,7 +16,7 @@ The first method is presented in [@fig:dynamic_behaviour_get_operation], where t
 sequenceDiagram
     participant Service-Provider
     participant Service Consumer
-    Service Consumer->>+Service-Provider: Get Summary(DataReference, Geometry, TimePeriod)
+    Service Consumer->>+Service-Provider: Get(DataReference, Geometry, TimePeriod)
     Service-Provider->>-Service Consumer: Response: S100ExchangeSet
 
 ```
