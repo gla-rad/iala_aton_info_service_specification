@@ -18,6 +18,21 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 # Move to the main directory
 cd $SCRIPT_DIR/../..
 
+# Create a Virtual Directory for Python
+virtualenv .venv
+source .venv/bin/activate
+
+# And install all the necessary dependencies
+python -m pip install python-docx==1.1.0
+python -m pip install docxcompose==1.4.0
+python -m pip install mermaid-cli
+python -m playwright install chromium
+
+# Generate the Mermaid Diagrams
+for file in $(find . -name "*.md"); do
+    mmdc -e png -b white -i $file -o $file
+done
+
 # Now run pandoc
 pandoc --standalone\
             -f markdown+rebase_relative_paths+markdown_in_html_blocks\
@@ -40,8 +55,4 @@ pandoc --standalone\
             source/guideline/acronyms_and_terms.md
 
 # And finally combine the documents
-virtualenv .venv
-source .venv/bin/activate
-python -m pip install python-docx==1.1.0
-python -m pip install docxcompose==1.4.0
 python source/utils/combine_docx.py
