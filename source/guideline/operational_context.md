@@ -202,7 +202,7 @@ The following tables describe the operational activities of the service.
 
 **Name**: Retrieve updates on the AtoN information through subscription service.
 
-**Description**: AtoN information and its changes, including status, within the user’s subscription parameters are made available by the service provider. Parameters may include a geographical area, or time duration for the subscription. Includes navigation safety information such as AtoN casualties or changes which may impact navigational safety: discrepancies, notification of temporary changes, advanced notice of changes, permanent changes and proposed changes to AtoN. Thr user system is an ECDIS/ECS, or another VTS/route planning system.
+**Description**: AtoN information and its changes, including status, within the user’s subscription parameters are made available by the service provider. Parameters may include a geographical area, or time duration for the subscription. Includes navigation safety information such as AtoN casualties or changes which may impact navigational safety: discrepancies, notification of temporary changes, advanced notice of changes, permanent changes and proposed changes to AtoN. The user system is an ECDIS/ECS, or another VTS/route planning system.
 
 **Actors**: AtoN information service, ECDIS/ECS or other VTS/route planning system, Mariner, Shore-based user (e.g. VTS)
 
