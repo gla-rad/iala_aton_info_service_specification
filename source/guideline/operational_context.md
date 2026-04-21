@@ -6,27 +6,27 @@ This section describes the context of the service from an operational perspectiv
 
 ## Pre S-125 Operational Context {sec:pres_125_operational_context}
 
-From a practical perspective, the List of Lights is intended for use by mariners as a compendium to the navigational chart for AtoN information. In accordance with IHO S-12, The List of Lights and Fog Signals describe maritime signal installations on land or afloat producing light or sound signals (fog signals). In addition, these volumes contain information relating to certain other navigational aids: buoyage (day and night); signals (port signals, rescue signals, tide signals, etc.), radio-based aids (radio beacons, radar, radio navigation systems), etc.  
+From a practical perspective, the List of Lights is intended for use by mariners as a compendium to the navigational chart for AtoN information. In accordance with IHO S-12, the "List of Lights and Fog Signals" describes maritime signal installations on land or afloat producing light or sound signals (fog signals). In addition, these volumes contain information relating to certain other navigational aids: buoyage (day and night); signals (port signals, rescue signals, tide signals, etc.), radio-based aids (radio beacons, radar, radio navigation systems), etc. 
 
-IHO S-53, is concerned with drafting navigational warnings or with the issuance of meteorological forecasts and warnings under the Global Maritime Distress and Safety System (GMDSS). Maritime Safety Information (MSI) is promulgated in accordance with the requirements of IMO resolution A.705(17), as amended. Navigational Warnings are issued under the auspices of the IMO/International Hydrographic Organization (IHO) World-Wide Navigational Warning Service (WWNWS) in accordance with the requirements of IMO resolution A.706(17), as amended. Navigational Warnings (NW), including ATON casualties or changes which may impact navigational safety, are part of the Maritime Safety Information (MSI) system. This includes casualties to lights, fog signals, buoys and other aids to navigation affecting main shipping lanes as well as establishment of major new aids to navigation or significant changes to existing ones, when such establishment or change might be misleading to shipping.  Currently, NW are promulgated as a radio broadcast and then printed in text format. The messages are standardized as SafetyNET, SafetyCast, NAVTEX broadcasts, and are in some countries accessible on the WWW or as voice broadcasts via coastal radio stations.  System interfaces between NW publishers, NAVAREA (or Sub-Area) coordinator and broadcast service are not standardized, and may rely on manual processes involving e-mail, telephone, voice radio transmissions, fax, telex and manual re-entering of information from one system to another, or much more advanced solutions. Provision of NW via web is not standardized. NAVTEX, SafetyCast and SafetyNET cannot transport structured data formats for a joint NW-NM solution.   
+IHO S-53, is concerned with drafting navigational warnings or with the issuance of meteorological forecasts and warnings under the Global Maritime Distress and Safety System (GMDSS). Navigational Warnings (NW) are issued under the auspices of the IMO/IHO World-Wide Navigational Warning Service (WWNWS), in accordance with the requirements of IMO resolution A.706(17), as amended. NW, including AtoN casualties or changes which may impact navigational safety, are part of the Maritime Safety Information (MSI) system. MSI is promulgated in accordance with the requirements of IMO resolution A.705(17), as amended. It includes casualties to lights, fog signals, buoys and other aids to navigation affecting main shipping lanes as well as establishment of major new aids to navigation or significant changes to existing ones, when such establishment or change might be misleading to shipping. Currently, NW are promulgated as a radio broadcast and then printed in text format. The messages are standardized as SafetyNET, SafetyCast, NAVTEX broadcasts, and are in some countries accessible on the WWW or as voice broadcasts via coastal radio stations. System interfaces between NW publishers, NAVAREA (or Sub-Area) coordinator and broadcast service are not standardized, and may rely on manual processes involving e-mail, telephone, voice radio transmissions, fax, telex and manual re-entering of information from one system to another, or much more advanced solutions. Provision of NW via web is not standardized. NAVTEX, SafetyCast and SafetyNET cannot transport structured data formats for a joint NW-NM solution.   
 
-The pre-S-125 “present day” operational context of promulgation at the component level, is depicted below. A generalize assumption is made that information management systems are unique to each ATON Administration.
+The pre-S-125 “present day” operational context of promulgation at the component level, is depicted below. A generalize assumption is made that information management systems are unique to each AtoN Administration.
 
 ![Pre S-125 “Present Day” Operational Context.](../../resources/PresentDayOperationalContext.png){#fig:present_day_operational_context}
 
-System interfaces between AtoN Administrations, Hydrographic Officers, Nautical Publication Publishers, and dissemination methods are unique, and may rely on manual processes involving carriage of paper print copies or human readable digital renditions obtained via web services or email.  Provision of the AtoN information included within the List of Lights via web services is not standardized. 
+System interfaces between AtoN Administrations, Hydrographic Officers, Nautical Publication Publishers, and dissemination methods are unique, and may rely on manual processes involving carriage of paper print copies or human readable digital renditions obtained via web services or email. Provision of the AtoN information included within the List of Lights via web services is not standardized. 
 
 ## Envisioned Operational Context {#sec:envisioned_operational_context}
 
-![Envisioned S-125 Operational Context](../../resources/S125OperationalContext.png){#fig:s125_operational_context}
+A standardized structured AtoN information format would enable compatible systems to exchange AtoN information seamlessly. Each AtoN Administration may have a unique AtoN Information Management System. This system however, should be able to automatically promulgate AtoN data from the authoritative source, for use by national and local authorities (e.g.  Coastal State Authorities, Harbor and Port Authorities), the mariner public, as well as being available for use by commercial value-added service providers. 
 
-This scenario depicts an envisaged future of S-125 data exchange. Based on a standardized structured AtoN information (List of Lights) format, compatible systems will be able to exchange AtoN Data seamlessly. As depicted, each AtoN Administration may have a unique AtoN Information Management System. This system should automatically promulgate S-125 data from the authoritative source for use by national and local authorities (e.g.  Coastal State Authorities, Harbor and Port Authorities), the mariner public, as well as being available for use by commercial value-added services providers.  The provision of an “S-125 Service” described in this document, is depicted as those activities after production of the S-125 data by AtoN administrations in the above diagram. It is envisioned that the legacy IHO S-12 data is a subcomponent and replaced by S-125. Administrations may desire to continue providing S-12 format human readable “paper reference” List of Lights in addition to the S-125 Marine Navigation Services, either transitionally, or indefinitely.
-
-AtoN Administrations will administer and publish local S-125 data for their area of responsibility, typically this includes areas within that state’s exclusive economic zone. Where appropriate they should coordinate with adjacent or overlapping AtoN administrations who share responsibility within the same waterway.  (e.g. Both the U.S. Coast Guard and Canadian Coast Guard maintain aids to navigation within the waterways comprising the Great Lakes.) The instance descriptions will provide detailed information of coverage area available to users.
+AtoN Administrations will administer and publish local AtoN data, for their area of responsibility. Typically this includes areas within that state’s exclusive economic zone. Where appropriate they should coordinate with adjacent or overlapping AtoN administrations who share responsibility within the same waterway.  (e.g. Both the U.S. Coast Guard and Canadian Coast Guard maintain aids to navigation within the waterways comprising the Great Lakes.) The instance descriptions will provide detailed information of coverage area available to users.
 
 ![Example of the AtoN information flow, as per [@cite:iala-ms2].](../../resources/AtoNInfoDistribution.png){#fig:ms_aton_information_flow}
 
-The service described in this specification defines the exchange of AtoN information between a service provider and the end user of such a service. In the most common case, the end user will use an ECDIS to receive and display the information onboard a ship. However, as illustrated in the IALA interperation of the IMO *MS-2 Aids to Navigation* maritime service [@cite:iala-ms2], seen in [@fig:ms_aton_information_flow], the application of this service specification is not limited to the exchange of information from shore to ship. It may also be used to harmonise the exchange of AtoN information between other stakeholders in the data distribution chain before it is received by the end user on a ship. This includes the data exchange between AtoN Authorities, coastal authorities, Regional Electronic Navigational Chart Coordination Centre (RENCs), Value Added Providers, public portals, and other entities. Depending on the specific requirements, the service usage patterns may differ. For example, A Value-Added Provider could pull all available data and subscribe to updates from a data producer (e.g., national AtoN authority) and redistribute the data to the end user via its own implementation of this service (after applying validation checks or optimising the data for a specific group of end users). The orchestration of multiple AtoN information services in the distribution chain, however, is not in the scope of this document and lies within the responsibility of the service provider(s).
+The service described in this specification defines the exchange of AtoN information over S-125 between a service provider and the end-user of such a service. In the most common case, the end-user will use an ECDIS to receive and display the information onboard a ship. However, as illustrated in the IALA interpretation of the IMO *MS-2 Aids to Navigation* maritime service [@cite:iala-ms2], seen in [@fig:ms_aton_information_flow], the application of this service specification is not limited to the exchange of information from shore to ship. It may also be used to harmonise the exchange of AtoN information between other stakeholders in the data distribution chain before it is received by the end-user on a ship. This includes the data exchange between AtoN Authorities, coastal authorities, Regional Electronic Navigational Chart Coordination Centre (RENCs), Value-Added Providers, public portals, and other entities. Depending on the specific requirements, the service usage patterns may differ. For example, A Value-Added Provider could pull all available data and subscribe to updates from a data producer (e.g., national AtoN authority) and redistribute the data to the end user via its own implementation of this service (after applying validation checks or optimising the data for a specific group of end-users). The orchestration of multiple AtoN information services in the distribution chain, however, is not in the scope of this document and lies within the responsibility of the service provider(s).
+
+As seen in [@fig:ms_aton_information_flow], AtoN Administrations are expected to exchange AtoN information with other authorities primarily through S-201. However, the use of other ECDIS-focused data product specifications, such as S-124 and S-125, could also be considered for the distribution of AtoN information to the end-users. In addition, the legacy Light of Lights publication could in the future be supplemented or even replaced by more up to date electronic AtoN information found in S-101 and S-125.
 
 ### Relationships between S-125 and S-101, S-124, S-201 {#sec:relationship_124_s125_s201}
 
@@ -135,11 +135,31 @@ The following tables describe the operational activities of the service.
 
 #### Use-case #1
 
+**Name**: Retrieve AtoN status indication information for portrayal on ECDIS
+
+**Description**: Retrieve and portray changes on the design state of AtoN (found in S-101 ENC) to the ECDIS.
+
+**Actors**: ATON Administrator, AtoN information service, Mariner, ECDIS.
+
+**Frequency of Use**: Adhoc.
+
+**Pre-conditions**: The service instance is known to the relevant system or has access to a service registry in which the service instance can be discovered. Data is packaged in S-125 datasets with MRN attributes populated. S-125 datasets cannot be broken apart into division beyond those established by the authoritative source for liability reasons.
+
+**Ordinary Sequence**:
+
+  1. The AtoN status indication information is requested from the service.
+  2. The service directly answers the request with the appropriate data. This includes the S-125 AtoN indication features of the data product, but does not necessarily contain the design state AtoN information.
+  3. The data is rendered and displayed to the user.
+
+**Post-conditions**: The correct AtoN status information is displayed.
+
+#### Use-case #2
+
 **Name**: Retrieve complete S-125 AtoN information from a service provider.
 
-**Description**: All AtoN information from a S-125 service provider is requested by the user. System is ECDIS/ECS, or other route planning system.
+**Description**: All AtoN information from a S-125 service provider is requested by the user. System is ECDIS/ECS, or other VTS/route planning system.
 
-**Actors**: Shore-based user (e.g. VTS), AtoN information service, Mariner, ECDIS/ECS or other route planning system
+**Actors**: Shore-based user (e.g. VTS), AtoN information service, Mariner, ECDIS/ECS or other VTS/route planning system
 
 **Frequency of Use**: Typically triggered once when a user request information
 
@@ -153,13 +173,13 @@ The following tables describe the operational activities of the service.
 
 **Post-conditions**:: The correct AtoN information is received by the user
 
-#### Use-case #2
+#### Use-case #3
 
 **Name**: Retrieve AtoN information for a specific area, geographically defined waterway, predefined by authoritative source as S-125 dataset(s).
 
-**Description**: Complete dataset(s) of AtoNs located in the area covered by the chart or defined by the user is requested by the system, including information such as ATON casualties or changes which may impact navigational safety; notification of temporary changes, advanced notice of changes, and proposed changes to ATON. System is ECDIS/ECS, or other route planning system.
+**Description**: Complete dataset(s) of AtoNs located in the area covered by the chart or defined by the user is requested by the system, including information such as ATON casualties or changes which may impact navigational safety; notification of temporary changes, advanced notice of changes, and proposed changes to ATON. System is ECDIS/ECS, or other VTS/route planning system.
 
-**Actors**: Mariner, System, AtoN information service
+**Actors**: Shore-based user (e.g. VTS), AtoN information service, Mariner, ECDIS/ECS or other VTS/route planning system
 
 **Frequency of Use**: Typically triggered once when new updates are available or when user needs information for a (serviced defined) area.
 
@@ -176,13 +196,13 @@ The following tables describe the operational activities of the service.
 
 **Post-conditions**: The correct AtoN information is received by the user
 
-#### Use-case #3
+#### Use-case #4
 
 **Name**: Retrieve updates on the AtoN information through subscription service.
 
-**Description**: ATON information and its changes, including status, within the user’s subscription parameters as made available by the service provider. Parameters may include a geographical area, or time duration for the subscription. Includes navigation safety information such as AtoN casualties or changes which may impact navigational safety: discrepancies, notification of temporary changes, advanced notice of changes, and proposed changes to AtoN.  System is ECDIS/ECS, or other route planning system.
+**Description**: ATON information and its changes, including status, within the user’s subscription parameters as made available by the service provider. Parameters may include a geographical area, or time duration for the subscription. Includes navigation safety information such as AtoN casualties or changes which may impact navigational safety: discrepancies, notification of temporary changes, advanced notice of changes, and proposed changes to AtoN.  System is ECDIS/ECS, or other VTS/route planning system.
 
-**Actors**: Mariner, System, AtoN information service
+**Actors**: Shore-based user (e.g. VTS), AtoN information service, Mariner, ECDIS/ECS or other VTS/route planning system
 
 **Frequency of Use**: Triggered by the needs of the subscriber, when they want to receive updates for dataset(s) they have previously received.
 
@@ -197,24 +217,3 @@ The following tables describe the operational activities of the service.
 
 **Post-conditions**: The correct AtoN status information is displayed
 
-<del>
-#### Use-case #4
-
-**Name**: Retrieve information on the status of a single AtoN based on its MRN [@cite:iala-g1143] or location.
-
-**Description**: Includes navigation safety information such as AtoN casualties or changes which may impact navigational safety; notification of temporary changes, advanced notice of changes, and proposed changes to AtoN.  System is non-ECDIS, but other route planning system.
-
-**Actors**: Researcher, ATON Administrator, AtoN information service
-
-**Frequency of Use**: Adhoc.
-
-**Pre-conditions**: The service instance is known to the relevant system or has access to a service registry in which the service instance can be discovered. Data is packaged in S-125 datasets with MRN attributes populated. S-125 datasets cannot be broken apart into division beyond those established by the authoritative source for liability reasons.
-
-**Ordinary Sequence**:
-
-  1. The AtoN status information is requested from the service.
-  2. The service directly answers the request with the appropriate data. This includes the S-125 data for the ATON identified as well as all additional ATON contained within the predefined S-125 dataset.
-  3. The data is rendered and displayed to the user.
-
-**Post-conditions**: The correct AtoN status information is displayed.
-</del>

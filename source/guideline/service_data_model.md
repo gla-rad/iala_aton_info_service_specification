@@ -18,6 +18,8 @@ Since the main purpose of the discussed service is to provide AtoN information t
 
 ![S-125 dataset coupled with service metadata in an S-100 Exchange Set.](../../resources/S125WithMetadata.png){#fig:s125_with_metadata width=65%}
 
+In version 1.0.0 of S-125 a new feature class `AtoNStatusIndication` was introduced. This allows the display of AtoN status changes directly on the ECDIS, without the requirement for the associate AtoN feature to also be included in the S-125 dataset. This results in significantly smaller S-125 datasets, when only status changes are exchanged. Another benefit of this approach is that S-125 can support both uses as an overlay in ECDIS and secondary use-cases.
+
 # Service Internal Data Model
 
 As the S-125 data model, used to represent the transmitted data, is developed independently from this service specification, the internal data model of the service should be adequate to generate the required S-125 datasets. In addition, a way to store service metadata that are not directly related to the data model (internal service identifies, signatures, etc.) is required. For further information, refer to IALA Guideline 1157. However, these metadata are mostly implementation specific and therefore are not discussed in this service specification. Examples on how to implement this functionality can also be found in the IHO S-100 data model specification [@cite:iho-s100], as well as the SECOM standard [@cite:iec-63173-2].
