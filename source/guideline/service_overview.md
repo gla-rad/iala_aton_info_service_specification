@@ -116,7 +116,7 @@ If multiple operation parameters are provided, only the results matching all req
 
 All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
 
-The service also supports the AtoN status indication feature type included in the S-125 data product specification. By default the service will return S-125 datasets that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtonDetails>` input parameter can be utilised to provide access to the full AtoN feature information for the respective datasets. These are expected to be much larger and the AtoN feature information may not be processed for portrayal on the ECDIS. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing the AtoN status indication features only.
+The service also supports the AtoN status indication feature type included in the S-125 data product specification. By default the service will return S-125 datasets that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtoNDetails>` input parameter can be utilised to provide access to the full AtoN feature information for the respective datasets. These are expected to be much larger and the AtoN feature information may not be processed for portrayal on the ECDIS. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing the AtoN status indication features only.
 
 #### Operation Parameters {#sec:get_operation_parameters}
 
@@ -126,7 +126,7 @@ The service also supports the AtoN status indication feature type included in th
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information S-125 datasets by a bounding box). |
 | unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | TimePeriod (Optional) | See technical design | 0..1 | An optional parameter denoting the time period (ValidFrom, ValidTo) in which a dataset is valid and becomes subject to changes. The service response is expected to encompass all modifications that occurred within the specified interval and should be provided in the form of complete datasets or delta files, adhering to the specifications outlined in the S-100 data model specification. |
-| AtonDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
+| AtoNDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
 
 : The Get Operation Parameters. {#tbl:get_operational_parameters}
 
@@ -144,7 +144,7 @@ If multiple operation parameters are provided, only the results that match all r
 
 All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_summary_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the respective service technical design specification. In most cases the parameter description provides an adequate definition.
 
-As discussed previously, the service also supports the AtoN status indication feature type included in the S-125. Therefore, by default the service will return the summary information of the S-125 datasets that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtonDetails>` input parameter can be utilised to the summary information for the full respective datasets, including all AtoN features. If the full AtoN feature information is requested but not available, the service should respond with the summary of the default datasets containing the AtoN status indication features only.
+As discussed previously, the service also supports the AtoN status indication feature type included in the S-125. Therefore, by default the service will return the summary information of the S-125 datasets that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtoNDetails>` input parameter can be utilised to the summary information for the full respective datasets, including all AtoN features. If the full AtoN feature information is requested but not available, the service should respond with the summary of the default datasets containing the AtoN status indication features only.
 
 #### Operation Parameters {#sec:get_summary_operation_parameters}
 
@@ -154,7 +154,7 @@ As discussed previously, the service also supports the AtoN status indication fe
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information by a bounding box). |
 | unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | TimePeriod (Optional) | See technical design | 0..1 | An optional parameter denoting the time period (ValidFrom, ValidTo) in which a dataset is valid and becomes subject to changes. The service response should only include the S-125 datasets for which modifications occurred within the specified interval. |
-| AtonDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
+| AtoNDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
 
 : The Get Summary Operation Parameters. {#tbl:get_summary_operational_parameters}
 
@@ -189,7 +189,7 @@ The Upload consumer operation is utilised by the service provider to push the in
 All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:subscription_operation_parameters], although the specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
 
 
-As discussed previously, the service also supports the AtoN status indication feature type included in the S-125. Therefore, by default the service will return the S-125 dataset updates that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtonDetails>` input parameter can be utilised to allow subscriptions tot the full respective datasets, including all AtoN features. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing the AtoN status indication features only.
+As discussed previously, the service also supports the AtoN status indication feature type included in the S-125. Therefore, by default the service will return the S-125 dataset updates that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtoNDetails>` input parameter can be utilised to allow subscriptions tot the full respective datasets, including all AtoN features. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing the AtoN status indication features only.
 
 #### Operation Parameters {#sec:subscription_operation_parameters}
 
@@ -199,7 +199,7 @@ As discussed previously, the service also supports the AtoN status indication fe
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information by a bounding box). |
 | unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | SubscriptionPeriod | See technical design | 0..1 | The period for which the subscription is active (start and end date/time). |
-| AtonDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
+| AtoNDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
 
 : The Subscription Operation Parameters. {#tbl:subscription_operational_parameters}
 
@@ -265,8 +265,8 @@ The acknowledgement message may be expected to be received when the uploaded mes
 
 | Parameters (in) | Encoding | Mult. | Descriptions |
 | --- | --- | ---  | --- |
-| S100ExchangeSet | S100ExchangeSet | 1 | S-125 datasets which conform to the data product specification including the service metadata (see Section 5). |
-| FromSubscription (Optional) | See technical design | 0..1 | Flag to indicate whether the payload has been uploaded within an active subscription or not. |
+| Data | See technical design | 1 | S-125 datasets which conform to the data product specification including the service metadata (see Section 5). |
+| SubscriptionIdentifier (Optional) | See technical design | 0..1 | Specific identifier of the subscription as part of which the data is being uploaded for. |
 | AckRequest (Optional) | See technical design | 0..1 | Flag to indicate that acknowledgement is expected when delivered, and an acknowledgement when message has been opened (read) by end user. |
 
 : The Upload Operation Parameters. {#tbl:upload_operational_parameters}
