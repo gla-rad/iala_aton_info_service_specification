@@ -4,7 +4,7 @@
 
 This section describes the logical data structures to be exchanged between providers and consumers of the service. The service data model is bound by the current definition of the IHO S-125. For complete and updated documentation refer to the latest S-125 Product Specification which can be found at:
     
-    https://iho.int/en/nipwg-product-specifications.
+    https://iho.int/en/nipwg-product-specifications
 
 Included in the service data model is a full description followed by specific extracts for;
 
@@ -18,7 +18,7 @@ Since the main purpose of the discussed service is to provide AtoN information t
 
 ![S-125 dataset coupled with service metadata in an S-100 Exchange Set.](../../resources/S125WithMetadata.png){#fig:s125_with_metadata width=65%}
 
-In version 1.0.0 of S-125 a new feature class `AtoNStatusIndication` was introduced. This allows the display of AtoN status changes directly on the ECDIS, without the requirement for the associate AtoN feature to also be included in the S-125 dataset. This results in significantly smaller S-125 datasets, when only status changes are exchanged. Another benefit of this approach is that S-125 can support both uses as an overlay in ECDIS and secondary use-cases.
+In version 1.0.0 of S-125 a new feature class `AtoNStatusIndication` was introduced. This allows the display of AtoN status changes directly on the ECDIS, without the requirement for the associated AtoN feature to also be included in the dataset. This results in significantly smaller S-125 datasets, where only AtoN status changes are exchanged. Another benefit of this approach is that S-125 can support both uses, as an overlay in ECDIS and secondary use-cases.
 
 # Service Internal Data Model
 

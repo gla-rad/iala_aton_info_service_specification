@@ -1,7 +1,6 @@
 # Introduction {#sec:introduction}
  
-This document is a specification for the technical service of provision of Marine Aids to Navigation (AtoN) information, following the IALA guideline G1128 [@cite:iala-g1128].
-In the context of e-navigation there is a number of maritime services, and each of these make reference to a number of associated technical services. The technical services themselves are described on three levels;
+This document describes the technical service for the provision of Marine Aids to Navigation (AtoN) information, following the IALA guideline G1128 [@cite:iala-g1128]. In the context of e-Navigation, there is a number of maritime services, each referencing a number of associated technical services. The technical services themselves are described in three levels:
 
 * Service specification (this document)
 
@@ -11,7 +10,7 @@ In the context of e-navigation there is a number of maritime services, and each 
 
 All the above documents are part of G1128 and are explained in that guideline.
 
-The AtoN information provision makes use of the International Hydrographic Organization (IHO) S-125 data model, which is outlined in the S-125 product specification. According to the International Hydrographic Office, S-125 - Marine Aids to Navigation (AtoN) describes navigational features including lights and other navigation aids, both physical and virtual; temporary and seasonal marks; and local AIS application-specific messages. Navigational services information may be considered supplementary additional information that complements the ENC.  This specific technical service may be referenced in other S-1xx product specifications and maritime services including MS12 - Nautical Publications and MS02 - AtoN.
+The AtoN information provision makes use of the IHO S-125 data model, which is outlined in the S-125 data product specification. According to the IHO, S-125 - Marine Aids to Navigation (AtoN) describes navigational features including lights and other navigation aids, both physical and virtual; temporary and seasonal marks; and local AIS application-specific messages. This information may be considered supplementary additional information that complements the ENC. This specific technical service may be referenced in other S-1xx product specifications and maritime services including MS12 - Nautical Publications and MS2 - AtoN.
 
 This service specification may be used with the Maritime Connectivity Platform (MCP), where the MCP would provide means of authentication of service providers and service consumers as well as means of service discoverability.
 
@@ -58,13 +57,13 @@ The following definitions describe terms used in this specification:
 
 * **Navigational Warning (NW)** - A broadcast message containing urgent information relevant to safe navigation.
 
-* **Maritime** Safety Information (MSI) - Navigational and meteorological warnings, meteorological forecasts and other urgent safety-related messages.
+* **Maritime Safety Information (MSI)** - Navigational and meteorological warnings, meteorological forecasts and other urgent safety-related messages.
 
 * **Navaid** - An instrument, device or nautical publication carried on board a vessel for the purpose of assisting navigation.
 
-* **NAVAREA** - A geographical sea area, as shown in the appendix (IMO A.706(17) established for the purpose of co-ordinating the transmission of radio navigational warnings. Where appropriate, the term NAVAREA followed by an identifying roman numeral may be used as a short title. The delimitation of such areas is not related to and shall not prejudice the delimitation of any boundaries between States. 
+* **NAVAREA** - A geographical sea area, as shown in the appendix IMO A.706(17) established for the purpose of co-ordinating the transmission of radio navigational warnings. Where appropriate, the term NAVAREA followed by an identifying roman numeral may be used as a short title. The delimitation of such areas is not related to and shall not prejudice the delimitation of any boundaries between States. 
 
-* **NAVAREA** Co-ordinator - The authority charged with co-ordinating, collating and issuing long-range navigational warnings and NAVAREA warnings bulletins to cover the whole of the NAVAREA 
+* **NAVAREA** Co-ordinator - The authority charged with co-ordinating, collating and issuing long-range navigational warnings and NAVAREA warnings bulletins to cover the whole of the NAVAREA.
 
 * **NAVTEX** - Single frequency time-shared broadcast system with automated reception and message rejection/selection facilities. Use of NAVTEX is regulated by the IMO NAVTEX Manual (IMO publication 951).
 

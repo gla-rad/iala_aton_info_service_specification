@@ -94,9 +94,9 @@ The implementation of a separate subscription notification operation on the AtoN
 
 ## Service Operations {#sec:service_operations}
 
-This section describes the details of each service operation, along with the relevant parameter definitions. To establish a service for the exchange of AtoN information, information is mainly provided by the service provider and is requested from the service consumer via the interfaces of the service provider. However, requirement S-125R009 states that a consumer must also be able to subscribe to updates of the service information. On the technical level, this may be realized in different ways. For example, the SECOM standard [@cite:iec-63173-2] requires the consumer to expose interfaces, to which new information can be pushed directly. Other technical designs may use a message broker as a middleware between consumer and provider, such that the consumer must not expose any public interfaces. For this reason, the respective consumer operations are modelled separately at the end of this section and may be implemented by other technical means as the service provider’s operations.
+This section describes the details of each service operation, along with the relevant parameter definitions. The AtoN information is mainly provided by a service provider and is requested from a service consumer via the interfaces of the service provider. However, requirement MS2-FR005 states that a consumer must also be able to subscribe to updates of the service information. On the technical level, this may be realized in different ways. For example, the SECOM standard [@cite:iec-63173-2] requires the consumer to expose interfaces, to which new information can be pushed directly. Other technical designs may use a message broker as a middleware between consumer and provider, such that the consumer must not expose any public interfaces. For this reason, the relevant consumer operations are modelled separately at the end of this section and may be implemented by other technical means as the service provider’s operations.
 
-To ensure the integrity of the transmitted information, responses or requests from the service provider must be signed digitally by the service provider independently from the signature that is applied to the S-125 dataset itself. The transmitted data may also be encrypted for transport. The authentication mechanism for service consumers is left as an implementation decision to the service provider.
+To ensure the integrity of the transmitted information, responses or requests from the service provider must be signed digitally by the service provider, independently from the signature that is applied to the S-125 dataset itself. The transmitted data may also be encrypted for transport. The authentication mechanism for service consumers is left as an implementation decision to the service provider.
 
 Furthermore, operations that are used internally by an AtoN information service provider to transfer AtoN information datasets from an internal information management system to the specified service are not discussed, as they are specific to those systems and not relevant for consumers of the service.
 
@@ -104,35 +104,35 @@ This section covers only the static design description, while the dynamic design
 
 ### Get Operation {#sec:get_operation}
 
-The *Get* operation is used by service consumers for filtering and retrieving AtoN information from a service provider, e.g. S-125 datasets that are applicable for a specified geographical area. The consumer can also filter the requested S-125 dataset results by a specific dataset reference identifier, a time period, an area name etc.
+The *Get* operation is used by service consumers for filtering and retrieving AtoN information from a service provider, e.g. S-125 datasets that are applicable for a specified geographical area. The consumer can also filter the requested S-125 dataset results by a specific dataset reference identifier, a time period etc.
 
 ![Get operation.](../../resources/GetInterface.png){#fig:get_operation width=75% }
 
 #### Operation Functionality {#sec:get_operation_functionality}
 
-This operation can be used for filtering and retrieving S-125 datasets from a service provider. It follows a request-response paradigm (REQUEST_RESPONSE), where a client queries the server, and based on a set of filtering criteria, receives an appropriate response back. The service response must be packaged as an S-100 Exchange Set, which contains all applicable S-125 datasets that match all the provided operation parameters, alongside any necessary metadata and support information. Other packaging formats are not supported by ECDIS and therefore are not included in this service specification. Each S-125 dataset contained in the response should include all AtoN entries allocated to it, **not** just the ones matching the operation parameters.
+This operation can be used for filtering and retrieving S-125 datasets from a service provider. It follows a request-response paradigm (REQUEST_RESPONSE), where a client queries the server, and based on a set of filtering criteria, receives an appropriate response back. The service response must be packaged as an S-100 Exchange Set, which contains all applicable S-125 datasets that match all the provided operation parameters, alongside any necessary metadata and support information. Other packaging formats are not supported by ECDIS and therefore are not mandated in this service specification. Each S-125 dataset contained in the response should include all AtoN entries allocated to it, **not** just the ones matching the operation parameters.
 
-If multiple operation parameters are provided, only the results matching all requested filters are to be returned. If no operation parameters are provided, the response should include all datasets currently available in the service provider. A service provider may offer different encodings of AtoN information in accordance with the S-100 standard, which can be specified as an enumeration (XML/GML or binary). A service provider is required to offer at least one of the available encodings.
+If multiple operation parameters are provided, only the results matching all requested filters are to be returned. If no operation parameters are provided, the response should include all datasets currently made available by the service provider. A service provider may offer different encodings of AtoN information in accordance with the S-100 standard, which can be specified as an enumeration (XML/GML or binary). A service provider is required to offer at least one of the available encodings.
 
-All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
+All instances of services providing AtoN information are required to support all operation parameters presented in the following [@sec:get_operation_parameters], apart from the `<TimePeriod>` and `<AtoNDetails>`  which are optional. The specific parameter encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
 
-The service also supports the AtoN status indication feature type included in the S-125 data product specification. By default the service will return S-125 datasets that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtoNDetails>` input parameter can be utilised to provide access to the full AtoN feature information for the respective datasets. These are expected to be much larger and the AtoN feature information may not be processed for portrayal on the ECDIS. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing the AtoN status indication features only.
+The service also supports the AtoN status indication feature type included in the S-125 data product specification. By default the service will return S-125 datasets that only contain the status indication information for the involved AtoN. If the service provider however chooses so, the optional `<AtoNDetails>` input parameter can be utilised to provide access to the full AtoN information (including the AtoN structure/equipment features) for the respective datasets. These are expected to be much larger and the AtoN feature information may not be processed for portrayal on the ECDIS. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing only the AtoN status indication features.
 
 #### Operation Parameters {#sec:get_operation_parameters}
 
-| Parameters (in) | Encoding | Mult. | Descriptions |
+| Parameters (in) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
 | DatasetReference | See technical design | 0..1 | The dataset identifier of a specific S-125 dataset. A list of all supported references can be retrieved via Get Summary operation. If no references are provided, it's up to the service to decide what to return. |
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information S-125 datasets by a bounding box). |
 | unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | TimePeriod (Optional) | See technical design | 0..1 | An optional parameter denoting the time period (ValidFrom, ValidTo) in which a dataset is valid and becomes subject to changes. The service response is expected to encompass all modifications that occurred within the specified interval and should be provided in the form of complete datasets or delta files, adhering to the specifications outlined in the S-100 data model specification. |
-| AtoNDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
+| AtoNDetails (Optional)| Boolean | 0..1 | Requests that the service returns datasets which include the latest AtoN design state details (not just the default AtoN status indication features), if available. |
 
 : The Get Operation Parameters. {#tbl:get_operational_parameters}
 
 ### Get Summary Operation {#sec:get_summary_operation}
 
-The *Get Summary operation* is used by service consumers for retrieving a list of summary information (without the actual dataset contents), in order to discover which S-125 datasets are being currently made available (and are accessible) by a service provider. The service provider will respond by listing the available (and accessible) S-125 datasets that are of interest to the consumer. This list should only contain summary information on each dataset, not the dataset content itself. The dataset reference identifiers can be used to retrieve the full S-125 datasets via the Get operation. The consumer can filter the requested S-125 dataset summary results by a specific dataset identifier reference, a geometry, a time period, an area name etc.
+The *Get Summary operation* is used by service consumers for retrieving a list of summary information (without the actual dataset contents), in order to discover which S-125 datasets are being currently made available (and are accessible) by a service provider. The service provider will respond by listing the available (and accessible) S-125 datasets that are of interest to the consumer. This list should only contain summary information on each dataset, not the dataset content itself. The dataset reference identifiers can be used to retrieve the full S-125 datasets via the Get operation. The consumer can filter the requested S-125 dataset summary results by a specific dataset identifier reference, a geometry, a time period etc.
 
 ![Get Summary operation.](../../resources/GetSummaryInterface.png){#fig:get_summary_operation}
 
@@ -142,32 +142,32 @@ The operation can be used for filtering and retrieving the summary information r
 
 If multiple operation parameters are provided, only the results that match all requested filters should be included. If no parameters are given, the return should include all available datasets.
 
-All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:get_summary_operation_parameters], apart from the `<TimePeriod>` which is optional. The specific encodings are left to be decided by the respective service technical design specification. In most cases the parameter description provides an adequate definition.
+All instances of services providing AtoN information are required to support all operation parameters presented in the following [@sec:get_summary_operation_parameters], apart from the `<TimePeriod>` and `<AtoNDetails>` which are optional. The specific encodings are left to be decided by the respective service technical design specification. In most cases the parameter description provides an adequate definition.
 
-As discussed previously, the service also supports the AtoN status indication feature type included in the S-125. Therefore, by default the service will return the summary information of the S-125 datasets that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtoNDetails>` input parameter can be utilised to the summary information for the full respective datasets, including all AtoN features. If the full AtoN feature information is requested but not available, the service should respond with the summary of the default datasets containing the AtoN status indication features only.
+As discussed previously, the service also supports the AtoN status indication feature type included in S-125. Therefore, by default the service will return the summary information of the S-125 datasets that only contain the status indication information for the included AtoN. If the service provider however chooses so, the optional `<AtoNDetails>` input parameter can be utilised to return the summary information for the full datasets, including the AtoN structure/equipment features. If the full AtoN feature information is requested but not available, the service should respond with the summary of the default datasets containing only the AtoN status indication features.
 
 #### Operation Parameters {#sec:get_summary_operation_parameters}
 
-| Parameters (in) | Encoding | Mult. | Descriptions |
+| Parameters (in) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
 | DatasetReference | See technical design | 0..1 | The dataset identifier of a specific S-125 dataset. If no references are provided, it's up to the service to decide what to return. |
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information by a bounding box). |
 | unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | TimePeriod (Optional) | See technical design | 0..1 | An optional parameter denoting the time period (ValidFrom, ValidTo) in which a dataset is valid and becomes subject to changes. The service response should only include the S-125 datasets for which modifications occurred within the specified interval. |
-| AtoNDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
+| AtoNDetails (Optional)| Boolean | 0..1 | Requests that the service returns the summary for datasets which include the latest AtoN design state details (not just the default AtoN status indication features), if available. |
 
 : The Get Summary Operation Parameters. {#tbl:get_summary_operational_parameters}
 
-| ReturnType (out) | Encoding | Mult. | Descriptions |
+| ReturnType (out) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
-| List of Dataset Summary Information | List of dataset summary information objects.  See technical design. | 0..* | Metadata of available AtoN information, that match the search parameters. |
+| List of Dataset Summary Information | List of dataset summary information objects. See technical design. | 0..* | Metadata of available AtoN information, that match the search parameters. |
 
 : The Get Summary Operation Return Types. {#tbl:get_summary_return_types}
 
 
 ### Subscription Operation {#sec:subscription_operation}
 
-The purpose of this operation is to facilitate subscriptions initiated by service consumers on specific AtoN information. The information a service consumer subscribes to, can either determined by the provided operation parameters, or decided upon by the service provider.
+The purpose of this operation is to facilitate subscriptions initiated by service consumers on specific AtoN information datasets. The information a service consumer subscribes to, can either determined by the provided operation parameters, or decided upon by the service provider.
 
 ![Subscription operation.](../../resources/SubscriptionInterface.png){#fig:subscription_operation width=75%}
 
@@ -186,26 +186,25 @@ This operation consumes the following consumer operations:
 
 The Upload consumer operation is utilised by the service provider to push the incurred S-125 dataset changes to the subscribed service consumer. The Subscription Notification operation on the other hand, is used to inform the consumer that on the status of the subscription, i.e. when it has been successfully activated or removed. More information on this operation can be found in the [@sec:dynamic_behaviour], describing the dynamic behaviour of the Subscription operation. Note that for each new subscription, a subscription identifier should be made available to the consumer.
 
-All instances of services providing AtoN information are required to support all operation parameters presented in the following sub-section [@sec:subscription_operation_parameters], although the specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
+All instances of services providing AtoN information are required to support all operation parameters presented in the following [@sec:subscription_operation_parameters], apart from `<AtoNDetails>` which is optional. The specific encodings are left to be decided by the service technical design specification. In most cases the parameter description provides an adequate definition.
 
-
-As discussed previously, the service also supports the AtoN status indication feature type included in the S-125. Therefore, by default the service will return the S-125 dataset updates that only contain the status indication information for the involved AtoN. If the service provider however chooses so, an optional `<AtoNDetails>` input parameter can be utilised to allow subscriptions tot the full respective datasets, including all AtoN features. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing the AtoN status indication features only.
+As discussed previously, the service also supports the AtoN status indication feature type included in the S-125. Therefore, by default the service will return the S-125 dataset updates that only contain the status indication information for the involved AtoN. If the service provider however chooses so, the optional `<AtoNDetails>` input parameter can be utilised to allow subscriptions to the full datasets,including the AtoN structure/equipment features. If the full AtoN feature information is requested but not available, the service should respond with the default datasets containing only the AtoN status indication features.
 
 #### Operation Parameters {#sec:subscription_operation_parameters}
 
-| Parameters (in) | Encoding | Mult. | Descriptions |
+| Parameters (in) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
 | DatasetReference | See technical design | 0..1 | The dataset identifier of a specific S-125 dataset. A list of all supported references can be retrieved via Get Summary operation. If no references are provided, it's up to the service to decide what to return. |
 | Geometry | See technical design | 0..1 | Geometry condition for geolocated information objects. This can be used to filter on geometric shapes (e.g. filter AtoN information by a bounding box). |
 | unlocode | See technical design | 0..1 | UN/LOCODE (United Nations Code for Trade and Transport Locations) of a defined object (e.g., “CN” for China). |
 | SubscriptionPeriod | See technical design | 0..1 | The period for which the subscription is active (start and end date/time). |
-| AtoNDetails | Boolean | 0..1 | Requests that the service will return all AtoN information along with the status indications, if available. |
+| AtoNDetails (Optional)| Boolean | 0..1 | Requests that the service returns datasets which include the latest AtoN design state details (not just the default AtoN status indication features), if available. |
 
 : The Subscription Operation Parameters. {#tbl:subscription_operational_parameters}
 
-| ReturnType (out) | Encoding | Mult. | Descriptions |
+| ReturnType (out) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
-| Result | List of dataset summary information objects.  See technical design. | 0..1 | Confirmation or error message. On confirmation, it must include a Subscription Identifier for the created subscription, which can then be used to remove the subscription. If the subscription corresponds to more than one information object, all information objects will be part of one subscription. |
+| Result | See technical design. | 0..1 | Confirmation or error message. On confirmation, it must include a Subscription Identifier for the created subscription, which can then be used to remove the subscription. If the subscription corresponds to more than one information object, all information objects will be part of one subscription. |
 
 : The Subscription Operation Return Types. {#tbl:subscription_return_types}
 
@@ -227,19 +226,19 @@ The Subscription Notification operation is used to inform the consumer that on t
 
 #### Operation Parameters {#sec:remove_subscription_operation_parameters}
 
-| Parameters (in) | Encoding | Mult. | Descriptions |
+| Parameters (in) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
 | SubscriptionIdentifier | See technical design | 0..1 | A specific identifier of the information object to remove the subscription for. If no subscription identifier is provided, all subscriptions for the consumer are removed. |
 
 : The Remove Subscription Operation Parameters. {#tbl:remove_subscription_operational_parameters}
 
-| ReturnType (out) | Encoding | Mult. | Descriptions |
+| ReturnType (out) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
-| Result | List of dataset summary information objects.  See technical design. | 0..1 | Confirmation or error message. |
+| Result | See technical design. | 0..1 | Confirmation or error message. |
 
 : The Remove Subscription Operation Return Types. {#tbl:remove_subscription_return_types}
 
-### Upload Operation {#sec:upload_operation}
+### Upload Operation (Consumer Operation - Optional) {#sec:upload_operation}
 
 The purpose of this operation is to allow service providers to upload (push) AtoN information to a service consumer. Hence, a consumer needs to implement this functionality as a separate operation or support it through the technology selected for the subscription operation, in order to receive S-125 datasets from a subscription or a unicast/broadcast operation.
 
@@ -251,27 +250,27 @@ The purpose of this operation is to allow service providers to upload (push) Ato
 
 This operation allows service consumers to be directly informed about new or updated S-125 datasets made available. The operation may follow two types of exchange patterns. The first one is a one-way paradigm (ONE_WAY), where a service sends data to the consumer without expecting information back, other than a technical response. Alternatively, a request-callback paradigm (REQUEST_CALLBACK) can be employed, where uploads are expected to result in an acknowledgement message sent asynchronously back. This acknowledgement should be directed to an Acknowledgement operation of the service provider. This mechanism however, as well as the operation specification, is left to be defined at the service design level, as it is considered to be implementation specific.
 
-This operation can be used both in single uploads and uploads under a subscription. The parameter `<FromSubscription>` indicates whether the upload took place within or outside a subscription by the consumer. 
+This operation can be used both in single uploads and uploads under a subscription. The parameter `<SubscriptionIdentifier>` indicates whether the upload took place within or outside a subscription, by specifying the subscription identifier. 
 
 As stated previously, this operation may optionally consume the following operations:
 
 * Acknowledgement
 
-When uploading an AtoN information message and if this functionality is actually supported by the service provider, the acknowledgement can be requested through the `<AckRequest>` operational parameter. The encoding of this parameter is left to be defined by the technical service specification, as it is implementation specific. For example, in SECOM this would be represented by a simple Boolean value, while other technologies may require to a more complex structure that defines the location of the provider service endpoint, as well as authentication information.
+When uploading AtoN information to a consumer, and if this functionality is actually supported by the service provider, the acknowledgement can be requested through the `<AckRequest>` operational parameter. The encoding of this parameter is left to be defined by the technical design, as it is implementation specific. For example, in SECOM this would be represented by a simple Boolean value, while other technologies may require to a more complex structure that defines the location of the provider service endpoint, as well as authentication information.
 
-The acknowledgement message may be expected to be received when the uploaded message has been delivered to end system (technical acknowledgement), and/or if supported, when the message has been opened (read) by the end user (operational acknowledgement). More information on this operation can be found in Section 6.2, describing the dynamic behavior description of the subscription on AtoN information.
+The acknowledgement message may be expected to be received when the uploaded message has been delivered to end system (technical acknowledgement), and/or if supported, when the message has been opened (read) by the end-user (operational acknowledgement). More information on this can be found in [@sec:dynamic_behaviour_subscription_retrieval], describing the dynamic behaviour description of the subscription operation.
 
 #### Operation Parameters {#sec:upload_operation_parameters}
 
-| Parameters (in) | Encoding | Mult. | Descriptions |
+| Parameters (in) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
-| Data | See technical design | 1 | S-125 datasets which conform to the data product specification including the service metadata (see Section 5). |
+| Data | See technical design | 1 | S-125 datasets which conform to the data product specification including the service metadata (see [@sec:service_data_model]). |
 | SubscriptionIdentifier (Optional) | See technical design | 0..1 | Specific identifier of the subscription as part of which the data is being uploaded for. |
-| AckRequest (Optional) | See technical design | 0..1 | Flag to indicate that acknowledgement is expected when delivered, and an acknowledgement when message has been opened (read) by end user. |
+| AckRequest (Optional) | See technical design | 0..1 | Flag to indicate that acknowledgement is expected when delivered, and an acknowledgement when message has been opened (read) by end-user. |
 
 : The Upload Operation Parameters. {#tbl:upload_operational_parameters}
 
-| ReturnType (out) | Encoding | Mult. | Descriptions |
+| ReturnType (out) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
 | Result | See technical design | 1 | Confirmation or error message. |
 
@@ -287,18 +286,18 @@ This operation is used by service consumers to receive notifications by a servic
 
 #### Operation Functionality {#sec:subscription_notification_operation_functionality}
 
-The operation receives notifications by the service provider, when a subscription is created or removed, either internally by information owner, or externally on request. This operation follows a one-way paradigm (ONE_WAY), where a service sends data to consumer without expecting information back, other than a technical response. More information on this operation can be found in Section [@sec:dynamic_behaviour], describing the dynamic behavior description of the subscription on AtoN information.
+The operation receives notifications by the service provider, when a subscription is created or removed, either internally by the information owner, or externally on request. This operation follows a one-way paradigm (ONE_WAY), where a service sends data to consumer without expecting information back, other than a technical response. More information on this operation can be found in Section [@sec:dynamic_behaviour], describing the dynamic behaviour description of the subscription on AtoN information.
 
 #### Operation Parameters {#sec:subscription_notification_operation_parameters}
 
-| Parameters (in) | Encoding | Mult. | Descriptions |
+| Parameters (in) | Encoding | Mult. | Description |
 | --- | --- | ---  | --- |
 | SubscriptionIdentifier (Optional) | See technical design | 1 | Specific identifier of the subscription for which the status has being updated. |
 | SubscriptionEvent | See technical design | 1 | Type of subscription status update event; Created or Deleted/Removed. |
 
 : The Subscription Notification Operation Parameters. {#tbl:subscription_notification_operational_parameters}
 
-| ReturnType (out) | Encoding | Mult. | Descriptions |
+| ReturnType (out) | Encoding | Mult. | Description |
 | --- | --- | --- | --- |
 | Result | See technical design | 1 | Confirmation or error message. |
 
