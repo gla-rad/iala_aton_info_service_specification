@@ -50,7 +50,7 @@ As demonstrated in [@fig:dynamic_behaviour_get_summary_operation], the Get Summa
 
 # Subscription-based AtoN Information Distribution {#sec:dynamic_behaviour_subscription_retrieval}
 
-The subscription on AtoN Information is an alternative method of data propagation, in which a service consumer actively registers its interest to receive updates either on a specific set or alternatively, on all available S-125 datasets. This operation covers Use ***Case #3***, as outlined in [@sec:use-cases].
+The subscription on AtoN Information is an alternative method of data propagation, in which a service consumer actively registers its interest to receive updates either on a specific set or alternatively, on all available S-125 datasets. This operation covers Use ***Case #4***, as outlined in [@sec:use-cases].
 
 [@fig:dynamic_behaviour_subscription_operation] illustrates the typical behaviour of the subscription operation. Initially, the service consumer is required to initiate the procedure through the Subscription operation of the service provider. By utilising the available operation parameters such as the geometry and the subscription period, only the specific S-125 datasets matching the specified criteria and have updates during the specified subscription interval will be covered. Once the subscription request has been received, processed and accepted by the service provider, a notification should be sent back to the service consumer, using its Subscription Notification operation. This notification will indicate that the requested subscription has commenced and should include a subscription identifier reference for the established subscription.
 
