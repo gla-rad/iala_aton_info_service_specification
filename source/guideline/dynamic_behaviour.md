@@ -6,7 +6,7 @@ This section describes the interactive behaviour of the operations between the s
 
 **Note**: The description of the behaviour of the aforementioned operations, is provided in an abstract manner, where generic actions are performed on technology-agnostic endpoints. The implementation of each of these operations is left to be decided by the extending service design documents. In addition, any specific authentication procedure that is being applied is out of scope of the service specification and should be described in the service designs of this service. 
 
-# Client-initiated Retrieval of AtoN Information {#sec:dynamic_behaviour_client_init_retrieval}
+## Client-initiated Retrieval of AtoN Information {#sec:dynamic_behaviour_client_init_retrieval}
 
 The client-initiated retrieval is triggered by the service consumer, when it issues request on the appropriate service provider operations (i.e. Get and Get Summary). This operation covers Use ***Case #1***, ***Use Case #2*** and ***Use Case #3***, as outlined in [@sec:use-cases]. All three use cases can be achieved by two methods; either by directly requesting specific S-125 datasets, using the operation parameters of the Get operation, or by first requesting the S-125 dataset summary information through the Get Summary operation, and then using the provided dataset reference identifiers, to retrieve the corresponding S-125 datasets. 
 
@@ -48,7 +48,7 @@ Client-Initiated AtoN Information Retrieval through the Get Summary operation.
 
 As demonstrated in [@fig:dynamic_behaviour_get_summary_operation], the Get Summary operation accepts similar operation parameters as the Get operation, which can be employed to filter the summary response list. This feature improves the flexibility of the whole operation as for example, even if a provided geometry operation parameter matches more than one S-125 datasets, only the required dataset will eventually be retrieved by the service consumer, by using its respective dataset reference identifier.
 
-# Subscription-based AtoN Information Distribution {#sec:dynamic_behaviour_subscription_retrieval}
+## Subscription-based AtoN Information Distribution {#sec:dynamic_behaviour_subscription_retrieval}
 
 The subscription on AtoN Information is an alternative method of data propagation, in which a service consumer actively registers its interest to receive updates either on a specific set or alternatively, on all available S-125 datasets. This operation covers Use ***Case #4***, as outlined in [@sec:use-cases].
 

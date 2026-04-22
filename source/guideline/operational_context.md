@@ -28,7 +28,7 @@ The service described in this specification defines the exchange of AtoN informa
 
 Depending on the specific requirements, the service usage patterns may differ. For example, a Value-Added Provider could pull all available data and subscribe to updates from a data producer (e.g. national AtoN authority) and redistribute the data to the end-user via its own implementation of this service (after applying validation checks or optimising the data for a specific group of end-users). The orchestration of multiple AtoN information services in the distribution chain, however, is not in the scope of this document and lies within the responsibility of the service provider(s).
 
-It is finally noted that in the future, the legacy Light of Lights publications could be supplemented or even replaced, pending of course an IMO SOLAS amendment endorsement, by more up to date electronic AtoN information found in S-101 and S-125.
+It is finally noted that in the future, the legacy List of Lights publications could be supplemented or even replaced, pending of course an IMO SOLAS amendment endorsement, by more up to date electronic AtoN information found in S-101 and S-125.
 
 ### Relationships between S-125 and S-101, S-124, S-201 {#sec:relationship_124_s125_s201}
 
